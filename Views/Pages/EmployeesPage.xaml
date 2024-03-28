@@ -1,0 +1,121 @@
+﻿<Page x:Class="Nikitin.Views.Pages.EmployeesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Nikitin.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1100"
+      xmlns:modern="http://schemas.modernwpf.com/2019"
+      Title="EmployeesPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+
+        <modern:SimpleStackPanel Orientation="Vertical"
+                              Margin="5 30"
+                              Spacing="30">
+            <modern:AutoSuggestBox x:Name="SearchTextBox"
+                                VerticalAlignment="Center"
+                                PlaceholderText="Поиск"           
+                                FontSize="17"
+                                QuerySubmitted="SearchTextBox_QuerySubmitted"
+                                BorderBrush="DeepSkyBlue"
+                                modern:ControlHelper.CornerRadius="10"
+                                QueryIcon="Find">
+
+            </modern:AutoSuggestBox>
+
+            <Button Background="DeepSkyBlue"
+                 Content="Добавить"
+                 x:Name="AddButton"
+                 Click="AddButton_Click"
+                 modern:ControlHelper.CornerRadius="10"
+                 Foreground="White"
+                 FontSize="17"
+                 HorizontalAlignment="Stretch"/>
+
+            <Button Background="DeepSkyBlue"
+                 Content="Обновить"
+                 Click="RefreshButton_Click"
+                 x:Name="RefreshButton"
+                 modern:ControlHelper.CornerRadius="10"
+                 Foreground="White"
+                 FontSize="17"
+                 HorizontalAlignment="Stretch"/>
+        </modern:SimpleStackPanel>
+
+        <DataGrid Grid.Column="1"
+               AutoGenerateColumns="False"
+               IsReadOnly="True"
+                  x:Name="EmployeesDataGrid"
+               Margin="0 5 0 0"
+               HeadersVisibility="Column"
+               BorderThickness="1"
+               BorderBrush="DeepSkyBlue"
+               Foreground="Black"
+               CanUserReorderColumns="False"
+               CanUserResizeColumns="False"
+               HorizontalScrollBarVisibility="Auto"
+               FontSize="18">
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="DeepSkyBlue"
+                                 BorderBrush="White"
+                                 BorderThickness="1"
+                                 x:Name="ChangeButton"
+                                 Foreground="White"
+                                 Content="🖍"
+                                 Click="ChangeButton_Click"
+                                 FontSize="17"
+                                 HorizontalAlignment="Center"
+                                 ToolTip="Изменить">
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Фамилия"
+                                 Binding="{Binding Surname}" />
+                <DataGridTextColumn Header="Имя"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn Header="Отчество"
+                                    Binding="{Binding Patronymic}" />
+                <DataGridTextColumn Header="Номер телефона"
+                                    Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="Логин"
+                                    Binding="{Binding Login}" />
+                <DataGridTextColumn Header="Пароль"
+                                    Binding="{Binding Password}" />
+                <DataGridTextColumn Header="Должность"
+                                    Binding="{Binding IdRoleNavigation}" />
+            </DataGrid.Columns>
+
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"
+                    TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background"
+                         Value="Transparent" />
+                    <Setter Property="FontWeight"
+                         Value="SemiBold" />
+                    <Setter Property="HorizontalAlignment"
+                         Value="Left" />
+                    <Setter Property="Margin"
+                         Value="5 0 0 0" />
+                </Style>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Background"
+                         Value="Transparent" />
+                </Style>
+
+            </DataGrid.Resources>
+
+        </DataGrid>
+    </Grid>
+</Page>

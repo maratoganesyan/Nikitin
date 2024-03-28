@@ -1,0 +1,142 @@
+﻿<Window x:Class="Nikitin.Views.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nikitin.Views"
+        mc:Ignorable="d"
+        xmlns:pages="clr-namespace:Nikitin.Views.Pages"
+         xmlns:modern="http://schemas.modernwpf.com/2019"
+        modern:WindowHelper.UseModernWindowStyle="True"
+        modern:ThemeManager.RequestedTheme="Light"
+        Icon="/Resources/Logo.png"
+        modern:TitleBar.IsIconVisible="True"
+        modern:TitleBar.Background="LightSkyBlue"
+        Title="Окно работника" Height="650" Width="1200">
+    <modern:NavigationView PaneDisplayMode="Top"
+                           IsBackButtonVisible="Collapsed"
+                           IsSettingsVisible="False"
+                           Foreground="White"
+                           Padding="0"
+                           FontSize="100"
+                           IsPaneOpen="False"
+                           SelectionChanged="NavigationView_SelectionChanged">
+        <modern:NavigationView.Resources>
+            <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="LightSkyBlue"/>
+            <SolidColorBrush x:Key="NavigationViewPaneBackground" Color="LightSkyBlue" />
+            <SolidColorBrush x:Key="NavigationViewSelectionIndicatorForeground" Color="White"/>
+        </modern:NavigationView.Resources>
+
+        <modern:NavigationView.MenuItems>
+
+            <modern:NavigationViewItem x:Name="ExitNVI"
+                                       Foreground="White"
+                                       FontSize="17"
+                                       BorderBrush="White"
+                                       BorderThickness="1"
+                                       Tag="Zatychka"
+                                       Content="◀️"/>
+
+            <modern:NavigationViewItem x:Name="EmployeeNVI"
+                                       Foreground="White"
+                                       FontSize="17"
+                                       BorderBrush="White"
+                                       BorderThickness="1"
+                                       Tag="{x:Type pages:EmployeesPage}"
+                                       Content="Работники"/>
+
+            <modern:NavigationViewItem x:Name="CarsNVI"
+                                       Foreground="White"
+                                       FontSize="17"
+                                       BorderBrush="White"
+                                       BorderThickness="1"
+                                       Tag=""
+                                       Content="Машины"/>
+
+            <modern:NavigationViewItem x:Name="RequestsNVI"
+                                       Foreground="White"
+                                       FontSize="17"
+                                       BorderBrush="White"
+                                       BorderThickness="1"
+                                       Tag=""
+                                       Content="Заказы"/>
+
+            <modern:NavigationViewItem x:Name="SprNVI"
+                                       Foreground="White"
+                                       BorderBrush="White"
+                                       BorderThickness="1"
+                                       FontSize="17"
+                                       Content="Справочники">
+                <modern:NavigationViewItem.MenuItems>
+                    <modern:NavigationViewItem x:Name="BrandsNVI"
+                                       FontSize="17"
+                                       Tag="{x:Type pages:BrandPage}"
+                                       Content="Марки"/>
+                    <modern:NavigationViewItem x:Name="ModelsNVI"
+                                       FontSize="17"
+                                       Tag="{x:Type pages:CarModelPage}"
+                                       Content="Модели"/>
+                    <modern:NavigationViewItem x:Name="CarStatusesNVI"
+                    FontSize="17"
+                    Tag="{x:Type pages:CarStatusPage}"
+                    Content="Статусы автомобилей"/>
+                    <modern:NavigationViewItem x:Name="DriveTypeNVI"
+                   FontSize="17"
+                   Tag="{x:Type pages:DriveTypePage}"
+                   Content="Привода"/>
+                    <modern:NavigationViewItem x:Name="FuelTypesNVI"
+                   FontSize="17"
+                   Tag="{x:Type pages:FuelTypePage}"
+                   Content="Типы топлива"/>
+                    <modern:NavigationViewItem x:Name="PutityStatusNVI"
+                   FontSize="17"
+                   Tag="{x:Type pages:PurityStatusPage}"
+                   Content="Статус дороги"/>
+                    <modern:NavigationViewItem x:Name="RequestStatusNVI"
+                   FontSize="17"
+                   Tag="{x:Type pages:RequestStatusPage}"
+                   Content="Статус заказа"/>
+                    <modern:NavigationViewItem x:Name="RolesNVI"
+                    FontSize="17"
+                    Tag="{x:Type pages:RolePage}"
+                    Content="Роли"/>
+                    <modern:NavigationViewItem x:Name="TransmissionNVI"
+                    FontSize="17"
+                    Tag="{x:Type pages:TransmissionPage}"
+                    Content="Коробки передач"/>
+
+
+                </modern:NavigationViewItem.MenuItems>
+            </modern:NavigationViewItem>
+
+        </modern:NavigationView.MenuItems>
+
+        <modern:NavigationView.PaneFooter>
+            <Border BorderBrush="White"
+                    BorderThickness="1">
+                <modern:SimpleStackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="EmployeeInformation"
+                               VerticalAlignment="Center"
+                               Margin="10 0 10 0"
+                               FontSize="17"
+                               Foreground="White"/>
+
+                    <Image Source="/Resources/Logo.png"
+                           VerticalAlignment="Center"
+                           Margin="0 5 5 0"/>
+                </modern:SimpleStackPanel>
+            </Border>
+        </modern:NavigationView.PaneFooter>
+
+
+        <Border BorderBrush="LightSkyBlue"
+                BorderThickness="2"
+                Margin="5"
+                CornerRadius="20">
+            <modern:Frame Margin="5"
+                          x:Name="MainContent">
+                
+            </modern:Frame>
+        </Border>
+    </modern:NavigationView>
+</Window>

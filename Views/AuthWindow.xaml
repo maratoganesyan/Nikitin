@@ -1,0 +1,116 @@
+﻿<Window x:Class="Nikitin.Views.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nikitin.Views"
+        mc:Ignorable="d"
+        xmlns:modern="http://schemas.modernwpf.com/2019"
+        xmlns:easy="clr-namespace:EasyCaptcha.Wpf;assembly=EasyCaptcha.Wpf"
+        WindowStartupLocation="CenterScreen"
+        modern:WindowHelper.UseModernWindowStyle="True"
+        Icon="/Resources/Logo.png"
+        modern:TitleBar.IsIconVisible="True"
+        Title="Окно авторизации" Height="450" Width="350">
+    <Window.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="White"
+                          Offset="1"
+                          />
+            <GradientStop Color="LightSkyBlue"
+                          Offset="0.4" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Image Source="/Resources/Logo.png" Width="130"
+               Margin="0 10 0 0"
+               VerticalAlignment="Top"/>
+        <modern:SimpleStackPanel HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Spacing="30"
+                                 Margin="0 80 0 0">
+            
+
+            <TextBox FontSize="17"
+                     x:Name="LoginTextBox"
+                     Width="230"
+                     modern:ControlHelper.CornerRadius="10"
+                     modern:ControlHelper.Header="Логин"
+                     modern:ControlHelper.PlaceholderText="Введите логин"
+                     SelectionBrush="DeepSkyBlue"
+                     BorderBrush="DeepSkyBlue"/>
+
+            <PasswordBox FontSize="17"
+                     x:Name="PasswordBox"
+                     HorizontalAlignment="Stretch"
+                     modern:ControlHelper.Header="Пароль"
+                     modern:ControlHelper.PlaceholderText="Введите пароль"
+                     SelectionBrush="DeepSkyBlue"
+                         modern:ControlHelper.CornerRadius="10"
+                     BorderBrush="DeepSkyBlue"/>
+            <Button Background="DeepSkyBlue"
+                    Content="Войти"
+                    x:Name="AuthButton"
+                    modern:ControlHelper.CornerRadius="10"
+                    Click="AuthButton_Click"
+                    Foreground="White"
+                    FontSize="17"
+                    HorizontalAlignment="Stretch"/>
+
+        </modern:SimpleStackPanel>
+
+        <modern:ContentDialog x:Name="CaptchaDialog"
+                              Visibility="Hidden">
+            <modern:ContentDialog.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="White"
+                          Offset="1"
+                          />
+                    <GradientStop Color="LightSkyBlue"
+                          Offset="0.4" />
+                </LinearGradientBrush>
+            </modern:ContentDialog.Background>
+            <modern:SimpleStackPanel Spacing="10"
+                                     VerticalAlignment="Bottom">
+                <TextBlock Text="Введите текст с рисунка" FontSize="25"
+                       HorizontalAlignment="Center"/>
+                <easy:Captcha x:Name="Captcha" 
+                              Height="100" 
+                              HorizontalAlignment="Stretch"/>
+                <TextBox  modern:ControlHelper.PlaceholderText="Введите ответ"
+                          FontSize="17"
+                          modern:ControlHelper.CornerRadius="10"
+                          SelectionBrush="DeepSkyBlue"
+                          BorderBrush="DeepSkyBlue"
+                          x:Name="AnswwerTextBox"/>
+
+                <modern:SimpleStackPanel Orientation="Horizontal"
+                                         HorizontalAlignment="Stretch"
+                                         Spacing="90">
+
+                    <Button Background="LightGray"
+                    Content="Обновить"
+                    x:Name="RefreshButton"
+                            modern:ControlHelper.CornerRadius="10"
+                    Click="RefreshButton_Click"
+                    Foreground="Black"
+                    FontSize="17"
+                    HorizontalAlignment="Stretch"/>
+
+                    <Button Background="DeepSkyBlue"
+                    Content="Ответить"
+                            modern:ControlHelper.CornerRadius="10"
+                            HorizontalAlignment="Right"
+                    x:Name="GiveAnswerButton"
+                    Click="GiveAnswerButton_Click"
+                    Foreground="White"
+                    FontSize="17"/>
+
+                </modern:SimpleStackPanel>
+
+
+            </modern:SimpleStackPanel>
+        </modern:ContentDialog>
+
+    </Grid>
+</Window>
