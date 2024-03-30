@@ -2,7 +2,7 @@
 using Word = Microsoft.Office.Interop.Word;
 using Microsoft.Office.Interop.Word;
 
-namespace Nikitin.Tools
+namespace Nikitin.GenerationTools
 {
     class ToolsForGeneration
     {

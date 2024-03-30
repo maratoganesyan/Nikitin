@@ -63,9 +63,29 @@ namespace Nikitin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] DriverReport {
+            get {
+                object obj = ResourceManager.GetObject("DriverReport", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] RequestsReport {
+            get {
+                object obj = ResourceManager.GetObject("RequestsReport", resourceCulture);
                 return ((byte[])(obj));
             }
         }

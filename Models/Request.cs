@@ -8,7 +8,7 @@ namespace Nikitin.Models
         public int IdRequest { get; set; }
         public int IdPurityStatus { get; set; }
         public int IdRequestStatus { get; set; }
-        public DateTime RequestDate { get; set; }
+        public DateTime RequestDate { get; set; } 
         public decimal FirstPointLng { get; set; }
         public decimal FirstPointLat { get; set; }
         public decimal SecondPointLng { get; set; }

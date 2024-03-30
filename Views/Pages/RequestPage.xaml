@@ -1,0 +1,125 @@
+﻿<Page x:Class="Nikitin.Views.Pages.RequestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Nikitin.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1100"
+      xmlns:modern="http://schemas.modernwpf.com/2019"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      Title="CarsPage">
+    <Grid>
+
+        <Grid x:Name="MapGrid"
+              Grid.Column="1"
+              Grid.ColumnSpan="2">
+            <m:Map x:Name="myMap" 
+                   CredentialsProvider="An0KvRLGMUMOfUqeHxq3oipPsb61_0OXP75rO2N5Bj_kDDTXMc2Y-9AEQSK6iaHm" 
+                   Mode="Road"
+                   Center="55.755829,37.617627"
+                   ZoomLevel="10"
+                   Loaded="myMap_Loaded"
+                   MouseRightButtonDown="myMap_MouseRightButtonDown">
+                <m:Map.ContextMenu >
+                    <ContextMenu x:Name="Context">
+                        <MenuItem Header="Добавить" Click="AddButton_Click"/>
+                    </ContextMenu>
+                </m:Map.ContextMenu>
+            </m:Map>
+        </Grid>
+
+        <Grid Grid.ColumnSpan="2">
+            <modern:ContentDialog x:Name="AddAndChange"
+                                  Visibility="Hidden"
+                                  Closed="AddAndChange_Closed"
+                                  Opened="AddAndChange_Opened">
+                <modern:ContentDialog.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="White"
+                                      Offset="1"/>
+                        <GradientStop Color="LightSkyBlue"
+                                      Offset="0.4" />
+                    </LinearGradientBrush>
+                </modern:ContentDialog.Background>
+
+                <modern:SimpleStackPanel VerticalAlignment="Center"
+                                         Spacing="20">
+                    <modern:SimpleStackPanel>
+                        <TextBlock Text="Дата и время заказа"
+                                   FontSize="17"/>
+                        <xctk:DateTimePicker x:Name="DateTimePicker"
+                                             FontSize="17"
+                                             modern:ControlHelper.CornerRadius="20"
+                                             Background="{Binding ElementName=PurityStatusComboBox, Path=Background}"
+                                             BorderBrush="DeepSkyBlue"/>
+                    </modern:SimpleStackPanel>
+                    <ComboBox FontSize="17"
+                              modern:ControlHelper.CornerRadius="10"
+                              modern:ControlHelper.Header="Статус дороги"
+                              x:Name="PurityStatusComboBox"
+                              Width="{Binding ElementName=DateTimePicker, Path=ActualWidth}"
+                              modern:ControlHelper.PlaceholderText="Выберите статус дороги"
+                              BorderBrush="DeepSkyBlue"/>
+
+                    <ComboBox FontSize="17"
+                              modern:ControlHelper.CornerRadius="10"
+                              modern:ControlHelper.Header="Статус дороги"
+                              x:Name="RequestStatusComboBox"
+                              Width="{Binding ElementName=DateTimePicker, Path=ActualWidth}"
+                              modern:ControlHelper.PlaceholderText="Выберите статус заказа"
+                              BorderBrush="DeepSkyBlue"/>
+
+                    <ComboBox FontSize="17"
+                              modern:ControlHelper.CornerRadius="10"
+                              modern:ControlHelper.Header="Автомобиль и водитель"
+                              x:Name="CarsComboBox"
+                              Width="{Binding ElementName=DateTimePicker, Path=ActualWidth}"
+                              modern:ControlHelper.PlaceholderText="Выберите автомобиль и водителя"
+                              BorderBrush="DeepSkyBlue">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <modern:SimpleStackPanel>
+                                    <TextBlock FontSize="17">
+                                        <Run Text="{Binding IdCarModelNavigation.IdBrandNavigation.BrandName}"/>
+                                        <Run Text="{Binding IdCarModelNavigation.ModelName}"/>
+                                    </TextBlock>
+                                    <TextBlock FontSize="17">
+                                        <Run Text="{Binding IdDriverNavigation.Surname}"/>
+                                        <Run Text="{Binding IdDriverNavigation.Name}"/>
+                                        <Run Text="{Binding IdDriverNavigation.Patronymic}"/>
+                                    </TextBlock>
+                                </modern:SimpleStackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <modern:SimpleStackPanel Orientation="Horizontal"
+                                             HorizontalAlignment="Stretch"
+                                             Spacing="100">
+                        <Button Background="LightGray"
+                                Content="Закрыть"
+                                x:Name="CloseButton"
+                                modern:ControlHelper.CornerRadius="10"
+                                Click="CloseButton_Click"
+                                Foreground="Black"
+                                FontSize="17"/>
+
+                        <Button Background="DeepSkyBlue"
+                                Content="Сохранить"
+                                modern:ControlHelper.CornerRadius="10"
+                                HorizontalAlignment="Right"
+                                x:Name="SaveButton"
+                                Click="SaveButton_Click"
+                                Foreground="White"
+                                FontSize="17"/>
+                    </modern:SimpleStackPanel>
+                </modern:SimpleStackPanel>
+                
+            </modern:ContentDialog>
+        </Grid>
+        
+    </Grid>
+</Page>

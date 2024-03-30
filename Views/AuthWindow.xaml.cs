@@ -30,7 +30,9 @@ namespace Nikitin.Views
 
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DbUtils.db.Employees.Any(u => u.Login == LoginTextBox.Text && u.Password == PasswordBox.Password))
+            if (DbUtils.db.Employees.Any(u => u.Login == LoginTextBox.Text && u.Password == PasswordBox.Password &&
+                                            (u.IdRole == DbUtils.Roles.Admin || u.IdRole == DbUtils.Roles.Director
+                                            || u.IdRole == DbUtils.Roles.Operator || u.IdRole == DbUtils.Roles.Driver)))
             {
                 var employee = DbUtils.db.Employees.Single(u => u.Login == LoginTextBox.Text && u.Password == PasswordBox.Password);
                 new EmployeeWindow(employee).Show();

@@ -1,4 +1,6 @@
-﻿using Nikitin.Tools;
+﻿using Nikitin.Models;
+using Nikitin.Tools;
+using Nikitin.Views.AddAndChange;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +43,13 @@ namespace Nikitin.Views.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            new EmployeeAddAndChange().ShowDialog();
         }
 
         private void ChangeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var employee = (sender as Button).DataContext as Employee;
+            new EmployeeAddAndChange(employee).ShowDialog();
         }
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e)

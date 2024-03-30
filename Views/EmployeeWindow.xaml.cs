@@ -32,7 +32,31 @@ namespace Nikitin.Views
 
         private void SetAccess(Employee employee)
         {
-
+            if(employee.IdRole == DbUtils.Roles.Operator)
+            {
+                SprNVI.Visibility = Visibility.Collapsed;
+                EmployeeNVI.Visibility = Visibility.Collapsed;
+                ReportsNVI.Visibility = Visibility.Collapsed;
+            }
+            if(employee.IdRole == DbUtils.Roles.Director)
+            {
+                SprNVI.Visibility = Visibility.Collapsed;
+                RequestsNVI.Visibility = Visibility.Collapsed;
+            }
+            if(employee.IdRole == DbUtils.Roles.Operator) 
+            {
+                SprNVI.Visibility = Visibility.Collapsed;
+                EmployeeNVI.Visibility = Visibility.Collapsed;
+                ReportsNVI.Visibility = Visibility.Collapsed;
+                CarsNVI.Visibility= Visibility.Collapsed;
+            }
+            if (employee.IdRole == DbUtils.Roles.Driver)
+            {
+                SprNVI.Visibility = Visibility.Collapsed;
+                EmployeeNVI.Visibility = Visibility.Collapsed;
+                ReportsNVI.Visibility = Visibility.Collapsed;
+                CarsNVI.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void NavigationView_SelectionChanged(ModernWpf.Controls.NavigationView sender, ModernWpf.Controls.NavigationViewSelectionChangedEventArgs args)

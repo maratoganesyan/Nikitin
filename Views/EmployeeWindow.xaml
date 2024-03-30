@@ -50,7 +50,7 @@
                                        FontSize="17"
                                        BorderBrush="White"
                                        BorderThickness="1"
-                                       Tag=""
+                                       Tag="{x:Type pages:CarsPage}"
                                        Content="Машины"/>
 
             <modern:NavigationViewItem x:Name="RequestsNVI"
@@ -58,8 +58,16 @@
                                        FontSize="17"
                                        BorderBrush="White"
                                        BorderThickness="1"
-                                       Tag=""
+                                       Tag="{x:Type pages:RequestPage}"
                                        Content="Заказы"/>
+
+            <modern:NavigationViewItem x:Name="ReportsNVI"
+                                       Foreground="White"
+                                       FontSize="17"
+                                       BorderBrush="White"
+                                       BorderThickness="1"
+                                       Tag="{x:Type pages:ReportsPage}"
+                                       Content="Отчёты"/>
 
             <modern:NavigationViewItem x:Name="SprNVI"
                                        Foreground="White"

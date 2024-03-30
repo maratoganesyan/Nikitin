@@ -1,0 +1,125 @@
+﻿<Window x:Class="Nikitin.Views.AddAndChange.CarsAddAndChange"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nikitin.Views.AddAndChange"
+        mc:Ignorable="d"
+            xmlns:modern="http://schemas.modernwpf.com/2019"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    WindowStartupLocation="CenterScreen"
+    modern:WindowHelper.UseModernWindowStyle="True"
+    Icon="/Resources/Logo.png"
+    modern:TitleBar.IsIconVisible="True"
+    Height="400" Width="550">
+    <Window.Background>
+        <LinearGradientBrush>
+            <GradientStop Color="White"
+              Offset="1"
+              />
+            <GradientStop Color="LightSkyBlue"
+              Offset="0.4" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <modern:SimpleStackPanel 
+                     VerticalAlignment="Center"
+                     Spacing="20"
+                     Margin="10">
+
+
+            <TextBox FontSize="17"
+                 modern:ControlHelper.CornerRadius="10"
+                 modern:ControlHelper.Header="Номер автомобиля"
+                 MaxLength="10"
+                 x:Name="StateNumber"
+                 modern:ControlHelper.PlaceholderText="Введите номер"
+                 SelectionBrush="DeepSkyBlue"
+                 BorderBrush="DeepSkyBlue"/>
+
+            <ComboBox FontSize="17"
+                  modern:ControlHelper.CornerRadius="10"
+                  modern:ControlHelper.Header="Водитель"
+                  x:Name="DriverComboBox"
+                  Width="{Binding ElementName=StateNumber, Path=ActualWidth}"
+                  modern:ControlHelper.PlaceholderText="Выберите водителя"
+                  BorderBrush="DeepSkyBlue">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Surname}"/>
+                            <Run Text="{Binding Name}"/>
+                            <Run Text="{Binding Patronymic}"/>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <ComboBox FontSize="17"
+                  modern:ControlHelper.CornerRadius="10"
+                  modern:ControlHelper.Header="Марка и модель"
+                  x:Name="ModelComboBox"
+                  Width="{Binding ElementName=StateNumber, Path=ActualWidth}"
+                  modern:ControlHelper.PlaceholderText="Выберите марку и модель"
+                  BorderBrush="DeepSkyBlue"/>
+
+            <ComboBox FontSize="17"
+                  modern:ControlHelper.CornerRadius="10"
+                  modern:ControlHelper.Header="Статус"
+                  x:Name="CarStatusComboBox"
+                  Width="{Binding ElementName=StateNumber, Path=ActualWidth}"
+                  modern:ControlHelper.PlaceholderText="Выберите статус"
+                  BorderBrush="DeepSkyBlue"/>
+
+        </modern:SimpleStackPanel>
+
+        <modern:SimpleStackPanel VerticalAlignment="Center"
+                             Spacing="20"
+                             Margin="10"
+                             Grid.Column="1">
+
+
+
+            <ComboBox FontSize="17"
+                  modern:ControlHelper.CornerRadius="10"
+                  modern:ControlHelper.Header="Коробка передач"
+                  x:Name="TransmissionComboBox"
+                  Width="{Binding ElementName=StateNumber, Path=ActualWidth}"
+                  modern:ControlHelper.PlaceholderText="Выберите коробку передач"
+                  BorderBrush="DeepSkyBlue"/>
+
+            <ComboBox FontSize="17"
+                  modern:ControlHelper.CornerRadius="10"
+                  modern:ControlHelper.Header="Тип топлива"
+                  x:Name="FuelTypeComboBox"
+                  Width="{Binding ElementName=StateNumber, Path=ActualWidth}"
+                  modern:ControlHelper.PlaceholderText="Выберите тип топлива"
+                  BorderBrush="DeepSkyBlue"/>
+
+            <ComboBox FontSize="17"
+                  modern:ControlHelper.CornerRadius="10"
+                  modern:ControlHelper.Header="Привод"
+                  x:Name="DriveTypeComboBox"
+                  Width="{Binding ElementName=StateNumber, Path=ActualWidth}"
+                  modern:ControlHelper.PlaceholderText="Выберите привод"
+                  BorderBrush="DeepSkyBlue"/>
+
+            <Button Background="DeepSkyBlue"
+                Content="Сохранить"
+                x:Name="SaveButton"
+                Margin="0 30 0 0"
+                modern:ControlHelper.CornerRadius="10"
+                Foreground="White"
+                FontSize="17"
+                Click="SaveButton_Click"
+                HorizontalAlignment="Stretch"/>
+
+        </modern:SimpleStackPanel>
+
+
+    </Grid>
+</Window>

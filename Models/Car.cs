@@ -26,5 +26,11 @@ namespace Nikitin.Models
         public virtual FuelType IdFuelTypeNavigation { get; set; } = null!;
         public virtual Transmission IdTransmissionNavigation { get; set; } = null!;
         public virtual ICollection<Request> Requests { get; set; }
+
+        public override string ToString()
+        {
+            return $"{StateNumber} {IdDriverNavigation.Surname} {IdDriverNavigation.Name} {IdDriverNavigation.Patronymic} {IdCarModelNavigation.IdBrandNavigation.BrandName}" +
+                   $"{IdCarModelNavigation.ModelName} {IdCarStatusNavigation.CarStatusName} {IdDriveTypeNavigation.DriveTypeName} {IdFuelTypeNavigation.FuelTypeName} {IdTransmissionNavigation.TransmissionName}";
+        }
     }
 }

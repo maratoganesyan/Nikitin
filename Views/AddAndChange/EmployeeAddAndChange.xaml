@@ -100,7 +100,7 @@
             <ComboBox FontSize="17"
                       modern:ControlHelper.CornerRadius="10"
                       modern:ControlHelper.Header="Должность"
-                      x:Name="TextBox"
+                      x:Name="RoleComboBox"
                       Width="{Binding ElementName=LoginTextBox, Path=ActualWidth}"
                       modern:ControlHelper.PlaceholderText="Введите должность"
                       BorderBrush="DeepSkyBlue"/>
